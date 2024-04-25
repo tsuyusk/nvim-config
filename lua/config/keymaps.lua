@@ -1,6 +1,6 @@
 local function debug_cpp_file()
   local current_file = vim.fn.expand("%")
-  local compile_command = string.format('!g++ -g -o e -std=c++20 "%s"', current_file)
+  local compile_command = string.format('!g++ -g -o e  "%s"', current_file)
   require("dapui").open()
   vim.api.nvim_command(compile_command)
   vim.api.nvim_command("DapContinue")
@@ -8,8 +8,8 @@ end
 
 local function run_cpp_file()
   local current_file = vim.fn.expand("%")
-  local compile_command = string.format('!g++ -flto "%s" -o exe -std=c++20', current_file)
-  local run_command = string.format("!./", current_file)
+  local compile_command = string.format('!g++ -flto "%s" -o "%s"', current_file, string.sub(current_file, 1, -5))
+  local run_command = string.format('!./"%s"', string.sub(current_file, 1, -5))
   vim.api.nvim_command(compile_command)
   vim.api.nvim_command(run_command)
 end

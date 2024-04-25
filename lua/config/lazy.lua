@@ -65,7 +65,7 @@ null_ls.setup({
 
 require("lspconfig").clangd.setup({
   init_options = {
-    fallbackFlags = { "-std=c++20" },
+    fallbackFlags = { "" },
   },
 })
 
